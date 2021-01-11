@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ToBase64ileSifreleme
+namespace EncryptDecrpytText
 {
     public partial class Form1 : Form
     {
@@ -17,26 +17,26 @@ namespace ToBase64ileSifreleme
             InitializeComponent();
         }
 
-        private void btnSifrele_Click(object sender, EventArgs e)
+        private void btnEncrypt_Click(object sender, EventArgs e)
         {
-            string anaMetin = txtAna.Text;
-            byte[] veriDizisi = ASCIIEncoding.ASCII.GetBytes(anaMetin);
-            string sifreliMetin = Convert.ToBase64String(veriDizisi);
-            txtSifreli.Text = sifreliMetin;
+            string mainText = txtMainText.Text;
+            byte[] byteArray = ASCIIEncoding.ASCII.GetBytes(mainText);
+            string encryptedPassword = Convert.ToBase64String(byteArray);
+            txtEncrypted.Text = encryptedPassword;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnDecrypt_Click(object sender, EventArgs e)
         {
-            string metinCoz = txtSifreli.Text;
-            byte[] veriDizisiCozulen = Convert.FromBase64String(metinCoz);
-            string anaMetin2 = ASCIIEncoding.ASCII.GetString(veriDizisiCozulen);
-            txtAna.Text = anaMetin2;
+            string decryptText = txtEncrypted.Text;
+            byte[] byteArrayEncrypted = Convert.FromBase64String(decryptText);
+            string mainText2 = ASCIIEncoding.ASCII.GetString(byteArrayEncrypted);
+            txtMainText.Text = mainText2;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnClear_Click(object sender, EventArgs e)
         {
-            txtAna.Clear();
-            txtSifreli.Clear();
+            txtMainText.Clear();
+            txtEncrypted.Clear();
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -51,24 +51,28 @@ namespace ToBase64ileSifreleme
             }
             
         }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
+        
+        private void pcbEnglish_Click(object sender, EventArgs e)
         {
-            label1.Text = "Main Text";
-            label2.Text = "Ecrypted Text";
+            // PictureBox for change language (for English)
+            
+            lblMain.Text = "Main Text";
+            lblEncrypted.Text = "Ecrypted Text";
             checkBox1.Text = "Show Note";
             label3.Visible = false;
             label4.Visible = true;
-            btnSifrele.Text = "Encrypt";
-            button2.Text = "Decrypt";
-            button1.Text = "Clear";
+            btnEncrypt.Text = "Encrypt";
+            btnDecrypt.Text = "Decrypt";
+            btnClear.Text = "Clear";
             this.Text = "Text Encryption";
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void pcbTurkish_Click(object sender, EventArgs e)
         {
-            label1.Text = "Ana Metin";
-            label2.Text = "Şifreli Metin";
+            // PictureBox for change language (for Turkish)
+            
+            lblMain.Text = "Ana Metin";
+            lblEncrypted.Text = "Şifreli Metin";
             checkBox1.Text = "Notu Göster";
             label3.Visible = true;
             label4.Visible = false;
