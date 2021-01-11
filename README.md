@@ -1,1 +1,1 @@
-# TextEncryptionProgram
+# Text Encryption & Decryption Program
